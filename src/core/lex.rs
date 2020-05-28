@@ -1,25 +1,27 @@
-use token::*
+mod token;
+use token::Token::{self, *};
 
 // A Lexer object
 // Contains the content that will be lexed
-pub struct Lexer
+pub struct Lexer<'z>
 {
-    content: Vec<String>
+    content: &'z Vec<String>
 }
 
-impl Lexer
+// Lifetimes stop the object's data from being lost in other variables when going out of scope?
+impl<'z> Lexer<'z>
 {
     pub fn new(inVec: Vec<String>) -> Self
     {
         Lexer
         {
-            content: inVec
+            content: &inVec
         }
     }
 
-    pub fn next(self: &mut Lexer) -> Result<Token, &'static str>
+    pub fn next(self: &mut Lexer<'z>) -> Result<Token, String>
     {
-        ...
+        Ok(NULL)
     }
 
 }
@@ -27,8 +29,7 @@ impl Lexer
 pub fn start(inVec: Vec<String>)
 {
 
-    let mut l = Lexer::new(inVec);
-
+    let l = Lexer::new(inVec);
     lex(l)
 
 }
@@ -36,7 +37,7 @@ pub fn start(inVec: Vec<String>)
 // Temporary for now
 pub fn lex(ls: Lexer)// -> Vec<Token>
 {
-    for word in inVec
+    for word in ls.content
     {
         match word
         {
