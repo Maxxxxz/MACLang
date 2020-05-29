@@ -4,6 +4,8 @@ use std::io::{Read};
 
 #[path="./core/lex.rs"]
 mod lex;
+#[path="./core/parse.rs"]
+mod parse;
 
 fn main()
 {
@@ -14,7 +16,7 @@ fn main()
         let inFileName = &args[1];
         println!("{}", inFileName);
         let toLex = readFile(inFileName);
-        lex::start(toLex);
+        lex::start(toLex.as_str());
     }
     else
     {
@@ -24,21 +26,21 @@ fn main()
     
 }
 
-fn readFile(inFile: &str) -> Vec<String>
+fn readFile(inFile: &str) -> String //Vec<String>
 {
     let mut file = File::open(inFile).unwrap();
 
     let mut out: String = String::new();
     file.read_to_string(&mut out);
 
-    let tVec: Vec<&str> = out.split_whitespace().collect();
+    // let tVec: Vec<&str> = out.split_whitespace().collect();
 
-    let mut outVec = Vec::new();
+    // let mut outVec = Vec::new();
 
-    for a in tVec
-    {
-        outVec.push(String::from(a))
-    }
+    // for a in tVec
+    // {
+    //     outVec.push(String::from(a))
+    // }
 
-    return outVec;
+    return out;
 }

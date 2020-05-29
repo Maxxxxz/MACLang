@@ -3,6 +3,7 @@ pub enum Token
     // Identifiers
     IDENT(String),
     // Keywords
+    FN,
     IF,
     WHILE,
     LOOP,
