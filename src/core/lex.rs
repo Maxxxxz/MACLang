@@ -1,5 +1,4 @@
-mod token;
-use token::Token::{self, *};
+use super::token::*;
 
 // A Lexer object
 // Contains the content that will be lexed
@@ -47,7 +46,7 @@ impl<'z> Lexer<'z>
 
     pub fn next(self: &mut Lexer<'z>) -> Result<Token, String>
     {
-        self.lex
+        self.lex()
     }
 
     pub fn lex(self: &mut Lexer<'z>) -> Result<Token, String>

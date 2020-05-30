@@ -1,11 +1,10 @@
-#[path="./lex.rs"]
-mod lex;
-use lex::*;
+use super::lex::*;
+use super::token::*;
 
 pub fn parse(inStr: &str)
 {
 
-    let l = Lexer::new(inStr);
+    let mut l = Lexer::new(inStr);
     
     // 1. Lex/parse all functions
     // 2. Grab and Compile 'main'
@@ -13,7 +12,11 @@ pub fn parse(inStr: &str)
 
     loop
     {
-        l.lex();
+        match l.lex().unwrap()
+        {
+            Token::NULL => (),
+            _ => (),
+        }
     }
     
 

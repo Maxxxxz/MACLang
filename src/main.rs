@@ -2,10 +2,16 @@ use std::env;
 use std::fs::{File, read_to_string};
 use std::io::{Read};
 
-#[path="./core/lex.rs"]
-mod lex;
-#[path="./core/parse.rs"]
-mod parse;
+//  From my understanding of module, main calls both lex and parse
+//  Both lex and parse call token, meaning that in order to have
+//  the same types we must bring it into scope directly above both
+//  of them by doing this.
+// #[path="./core/lex.rs"]
+// mod lex;
+// #[path="./core/parse.rs"]
+// mod parse;
+// #[path="./core/token.rs"]
+// mod token;
 
 fn main()
 {
@@ -16,7 +22,7 @@ fn main()
         let inFileName = &args[1];
         println!("{}", inFileName);
         let toLex = readFile(inFileName);
-        lex::start(toLex.as_str());
+        // lex::start(toLex.as_str());
     }
     else
     {
