@@ -1,24 +1,33 @@
 use super::lex::*;
 use super::token::*;
 
-pub fn parse(inStr: &str)
+pub struct Parser<'z>
 {
+    lexer: &'z mut Lexer<'z>,
 
-    let mut l = Lexer::new(inStr);
-    
-    // 1. Lex/parse all functions
-    // 2. Grab and Compile 'main'
-    // 3. 
+}
 
-    loop
+impl<'z> Parser<'z>
+{
+    pub fn parse(inStr: &str)// -> what to return to compiler? 🤔
     {
-        match l.lex().unwrap()
-        {
-            Token::NULL => (),
-            _ => (),
-        }
-    }
     
-
-
+        let mut l = Lexer::new(inStr);
+        
+        // 1. Lex/parse all functions
+        // 2. Grab and Compile 'main'
+        // 3. 
+    
+        loop
+        {
+            match l.lex().unwrap()
+            {
+                Token::NULL => (),
+                _ => (),
+            }
+        }
+        
+    
+    
+    }
 }

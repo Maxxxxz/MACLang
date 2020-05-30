@@ -22,6 +22,7 @@ fn main()
         let inFileName = &args[1];
         println!("{}", inFileName);
         let toLex = readFile(inFileName);
+        // call parser here
         // lex::start(toLex.as_str());
     }
     else
