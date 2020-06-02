@@ -22,6 +22,7 @@ impl<'z> Parser<'z>
         {
             match l.lex().unwrap()
             {
+                Token::FN   => (),
                 Token::NULL => (),
                 _ => (),
             }
